@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>webLab3</title>
+    <h:outputStylesheet library="styles" name="styles.css"/>
+    <h:outputScript library="scriptonit" name="drawing.js"/>
+    <h:outputScript library="styles" name="fonts/lib.p5/p5.min.js"/>
+</h:head>
+
+<h:body>
+
+
+
+    Проверка попадания точки на график<br/>
+    <h:form>
+
+        <div>
+        <p/><h:outputLabel  value="Введите значение X (-3;5): "/>
+        <h:inputText id="name" value="#{mainBean.y}"
+                     required="true" converterMessage="Некорректное значение" size="7"
+                     maxlength="5" validatorMessage="Не входит в заданные границы">
+            <f:validateDoubleRange minimum="-3" maximum="5"/>
+        </h:inputText>
+            <h:message id="y_message" for="name" style="color: lightcoral" autoupdate="true"/>
+        </div>
+
+        <div>
+        <p/><h:outputLabel  value="Введите значение Y [-4;4]: "/>
+        <h:commandButton value="-4">
+            <f:ajax execute="@form" render="name_msg"/>
+            <f:setPropertyActionListener value="-4" target="#{mainBean.y}"/>
+        </h:commandButton>
+        <h:commandButton value="-3">
+            <f:ajax execute="@form" render="name_msg"/>
+            <f:setPropertyActionListener value="-3" target="#{mainBean.y}"/>
+        </h:commandButton>
+        <h:commandButton value="-2">
+            <f:ajax execute="@form" render="name_msg"/>
+            <f:setPropertyActionListener value="-2" target="#{mainBean.y}"/>
+        </h:commandButton>
+        <h:commandButton value="-1">
+            <f:setPropertyActionListener value="-1" target="#{mainBean.y}"/>
+            <f:ajax execute="@form" render="name_msg"/>
+        </h:commandButton>
+        <h:commandButton value="0">
+            <f:setPropertyActionListener value="0" target="#{mainBean.y}"/>
+            <f:ajax execute="@form" render="name_msg"/>
+        </h:commandButton>
+        <h:commandButton value="1">
+            <f:setPropertyActionListener value="1" target="#{mainBean.y}"/>
+            <f:ajax execute="@form" render="name_msg"/>
+        </h:commandButton>
+        <h:commandButton value="2">
+            <f:setPropertyActionListener value="2" target="#{mainBean.y}"/>
+            <f:ajax execute="@form" render="name_msg"/>
+        </h:commandButton>
+        <h:commandButton value="3">
+            <f:setPropertyActionListener value="3" target="#{mainBean.y}"/>
+            <f:ajax execute="@form" render="name_msg"/>
+        </h:commandButton>
+        <h:commandButton value="4">
+            <f:setPropertyActionListener value="4" target="#{mainBean.y}"/>
+            <f:ajax execute="@form" render="name_msg"/>
+        </h:commandButton>
+        <br/></div>
+
+        <div>
+            <p/><h:outputLabel  value="Введите значение R [1;5]: "/>
+            <h:commandButton value="1">
+                <f:setPropertyActionListener value="1" target="#{mainBean.r}"/>
+                <f:ajax execute="@form" render="name_msg"/>
+            </h:commandButton>
+            <h:commandButton value="2">
+                <f:setPropertyActionListener value="2" target="#{mainBean.r}"/>
+                <f:ajax execute="@form" render="name_msg"/>
+            </h:commandButton>
+            <h:commandButton value="3">
+                <f:setPropertyActionListener value="3" target="#{mainBean.r}"/>
+                <f:ajax execute="@form" render="name_msg"/>
+            </h:commandButton>
+            <h:commandButton value="4">
+                <f:setPropertyActionListener value="4" target="#{mainBean.r}"/>
+                <f:ajax execute="@form" render="name_msg"/>
+            </h:commandButton>
+            <h:commandButton value="5">
+                <f:setPropertyActionListener value="5" target="#{mainBean.r}"/>
+                <f:ajax execute="@form" render="name_msg"/>
+            </h:commandButton>
+        </div>
+
+        <h:outputText id="name_msg" value="R.I.P. #{deadman.name}"/>
+
+        <h:commandButton class="check" value="Проверить" action="#{mainBean.addResult}">
+            <f:ajax execute="@form" render="table y_message"/>
+        </h:commandButton>
+    </h:form>
+
+
+    <h:panelGroup id="table" class="resultTable" autoupdate="true">
+        <h:dataTable value="#{mainBean.results}" var="result">
+            <h:column>
+                <f:facet name="header">X</f:facet>
+                ${result.x}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Y</f:facet>
+                ${result.y}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">R</f:facet>
+                ${result.r}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Попадание</f:facet>
+                ${result.answer}
+            </h:column>
+        </h:dataTable>
+    </h:panelGroup>
+
+    <div id="sketch-holder">AAAAA</div>
+</h:body>
+
+</html>

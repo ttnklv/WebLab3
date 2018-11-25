@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="TEST_THIS_SHIT:war exploded">
+    <output-path>$PROJECT_DIR$/target/TEST_THIS_SHIT-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="TEST THIS SHIT" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.2.10" />
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.2.10" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.2" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/TEST THIS SHIT-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="TEST THIS SHIT/web/Web" />
+    </root>
+  </artifact>
+</component>
